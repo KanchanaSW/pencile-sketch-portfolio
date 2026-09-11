@@ -10,7 +10,7 @@ Live work linked from the page includes [JSON Vibe](https://jsonshare.org) and [
 - React 18 + TypeScript
 - Tailwind CSS
 - Framer Motion
-- Deployed as a static site on [Netlify](https://www.netlify.com/)
+- Deployed as a static site on [Cloudflare Workers](https://workers.cloudflare.com/)
 
 ## Run locally
 
@@ -27,6 +27,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run build` | Production static export to `out/` |
 | `npm run start` | Serve the production build |
 | `npm run lint` | ESLint |
+| `npm run deploy` | Build and publish to Cloudflare |
 
 Node 18+ is enough.
 
@@ -46,20 +47,23 @@ Change that file and the page updates. Layout and motion stay in `app/` and `com
 app/            routes, fonts, global styles
 components/     nav, sections, sketch UI, motion
 config/site.ts  copy and links
-netlify.toml    build command + publish directory (`out`)
+wrangler.jsonc  Cloudflare Workers static-asset deploy
+netlify.toml    optional Netlify build settings (`out`)
 ```
 
 The site is a single route. Sections: hero, logos, craft, how I ship, testimonials, work, FAQ, CTA.
 
 ## Deploy
 
-`next.config.mjs` sets `output: "export"`. Netlify builds with `npm run build` and publishes `out/`.
+`next.config.mjs` sets `output: "export"`. Cloudflare serves the `out/` folder as Workers static assets.
 
-Connect the GitHub repo to Netlify, or deploy from this folder:
+From this folder:
 
 ```bash
-npx netlify deploy --prod
+npm run deploy
 ```
+
+Or connect [the GitHub repo](https://github.com/KanchanaSW/pencile-sketch-portfolio) to Workers Builds in the Cloudflare dashboard (build command `npm run build`, output `out`).
 
 ## License
 
