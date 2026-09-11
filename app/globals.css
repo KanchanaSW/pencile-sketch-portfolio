@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #fafaf7;
+  --ink: #1a1a1a;
+  --ink-muted: #4a4a4a;
+  --paper-shade: #f0efea;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background: #fafaf7;
+  color: #1a1a1a;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #1a1a1a;
+  color: #fafaf7;
+}
+
+section[id],
+#top,
+#main {
+  scroll-margin-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
